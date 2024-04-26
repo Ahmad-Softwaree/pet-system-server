@@ -3,11 +3,12 @@ const { JWT_SECRET } = process.env;
 
 export const managerMiddleware = async (req, res, next) => {
   try {
+    let roles = ["manager", "high_manager"];
     const authHeader = req.headers["authorization"];
     const token = authHeader && authHeader.split(" ")[1];
     if (token === null) return res.status(401).json({ message: "no token" });
     const decoded = jwt.decode(token, JWT_SECRET);
-    if (!decoded || decoded?.role !== "manager")
+    if (!decoded || !roles.includes(decoded?.role))
       return res.status(400).json({ message: "no user" });
     req.user = {
       id: decoded.id,

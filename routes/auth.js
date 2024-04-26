@@ -8,6 +8,7 @@ import {
 } from "../middleware/validation/validation.js";
 import { employeeMiddleware } from "../middleware/auth/employee.js";
 import { managerMiddleware } from "../middleware/auth/manager.js";
+import { highManagerMiddleware } from "../middleware/auth/highManager.js";
 const authApp = express.Router();
 
 authApp.get("/auth", employeeMiddleware, getAuth);
@@ -27,7 +28,7 @@ authApp.post(
   checkBody,
   passwordValidation,
   hashPassword,
-  managerMiddleware,
+  highManagerMiddleware,
   register
 );
 

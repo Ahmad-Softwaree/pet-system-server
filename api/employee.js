@@ -25,6 +25,19 @@ export const getEmployee = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+export const makeManager = async (req, res) => {
+  try {
+    let data = await db("user")
+      .where("role", "employee")
+      .andWhere("id", req.params.id)
+      .update({ role: "manager" });
+    data = await db("user").where("id", req.params.id);
+    return res.status(200).json({ data: data[0] });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 export const updateEmployee = async (req, res) => {
   try {
     let data = await db("user")

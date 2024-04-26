@@ -5,6 +5,8 @@ import {
   deleteManager,
   getManager,
   getManagers,
+  makeEmployee,
+  makeHighManager,
   updateManager,
 } from "../api/manager.js";
 import {
@@ -12,11 +14,15 @@ import {
   hashPassword,
   passwordValidation,
 } from "../middleware/validation/validation.js";
+import { highManagerMiddleware } from "../middleware/auth/highManager.js";
 
 const managerApp = express.Router();
 
-managerApp.get("/", managerMiddleware, getManagers);
-managerApp.get("/:id", managerMiddleware, getManager);
+managerApp.get("/", highManagerMiddleware, getManagers);
+managerApp.get("/:id", highManagerMiddleware, getManager);
+managerApp.put("/employee/:id", highManagerMiddleware, makeEmployee);
+managerApp.put("/high_manager/:id", highManagerMiddleware, makeHighManager);
+
 managerApp.put(
   "/:id",
   managerMiddleware,

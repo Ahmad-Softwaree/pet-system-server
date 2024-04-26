@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken";
 const { JWT_SECRET } = process.env;
 
-export const employeeMiddleware = async (req, res, next) => {
+export const highManagerMiddleware = async (req, res, next) => {
   try {
-    let roles = ["employee", "manager", "high_manager"];
+    let roles = ["high_manager"];
 
     const authHeader = req.headers["authorization"];
     const token = authHeader && authHeader.split(" ")[1];

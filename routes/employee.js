@@ -5,6 +5,7 @@ import {
   deleteEmployee,
   getEmployee,
   getEmployees,
+  makeManager,
   updateEmployee,
 } from "../api/employee.js";
 import {
@@ -12,11 +13,14 @@ import {
   hashPassword,
   passwordValidation,
 } from "../middleware/validation/validation.js";
+import { managerMiddleware } from "../middleware/auth/manager.js";
 
 const employeeApp = express.Router();
 
 employeeApp.get("/", employeeMiddleware, getEmployees);
 employeeApp.get("/:id", employeeMiddleware, getEmployee);
+employeeApp.put("/manager/:id", managerMiddleware, makeManager);
+
 employeeApp.put(
   "/:id",
   employeeMiddleware,
