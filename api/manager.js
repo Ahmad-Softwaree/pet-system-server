@@ -6,6 +6,7 @@ export const getManagers = async (req, res) => {
   let offset = (pages - 1) * PAGINATION;
   try {
     const data = await db("user")
+      .orderBy("id", "asc")
       .where("role", "manager")
       .orWhere("role", "high_manager")
       .andWhereNot("id", req.user.id)

@@ -17,7 +17,7 @@ const foodProducts = Array.from({ length: 10 }, () => ({
 
 const toyProducts = Array.from({ length: 10 }, () => ({
   name: faker.internet.displayName(),
-  type: "food",
+  type: "toy",
   price: faker.number.int({ max: 10000 }),
   quantity: faker.number.int({ max: 100000 }),
   discount: faker.number.int({ max: 50 }),

@@ -10,7 +10,6 @@ const managerUsers = Array.from({ length: 10 }, () => ({
   name: faker.internet.userName(),
   email: faker.internet.email(),
   password: faker.internet.password(),
-
   phone: faker.phone.number(),
   salary: faker.number.int({ max: 100000 }),
   age: faker.number.int({ max: 100000 }),

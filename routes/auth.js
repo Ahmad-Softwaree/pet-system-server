@@ -6,12 +6,12 @@ import {
   hashPassword,
   passwordValidation,
 } from "../middleware/validation/validation.js";
-import { employeeMiddleware } from "../middleware/auth/employee.js";
 import { managerMiddleware } from "../middleware/auth/manager.js";
 import { highManagerMiddleware } from "../middleware/auth/highManager.js";
+import { allMiddleware } from "../middleware/auth/all.js";
 const authApp = express.Router();
 
-authApp.get("/auth", employeeMiddleware, getAuth);
+authApp.get("/auth", allMiddleware, getAuth);
 authApp.post(
   "/login",
   body("email").notEmpty().isEmail(),

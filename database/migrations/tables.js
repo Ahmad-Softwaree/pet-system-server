@@ -1,5 +1,10 @@
 const up = function (knex) {
   return knex.schema
+    .createTable("config", function (table) {
+      table.increments("id").primary();
+      table.integer("money");
+      table.timestamps();
+    })
     .createTable("user", function (table) {
       table.increments("id").primary();
       table.string("name", 255).notNullable();
@@ -21,7 +26,6 @@ const up = function (knex) {
       table.integer("discount");
       table.integer("quantity");
       table.integer("price");
-
       table.timestamp("expire_date", { precision: 6 });
       table.timestamps();
     })
@@ -37,6 +41,8 @@ const up = function (knex) {
       table.string("gender", 255);
       table.boolean("checked").default("false");
       table.timestamp("adoption_history", { precision: 6 });
+      table.boolean("adopted").default("false");
+
       table.integer("age");
       table.timestamps();
     })
@@ -80,6 +86,8 @@ const up = function (knex) {
         .foreign("customer_id")
         .references("customer.id")
         .deferrable("deferred");
+      table.integer("quantity");
+
       table.integer("receipt_number").notNullable();
       table.timestamps();
     });

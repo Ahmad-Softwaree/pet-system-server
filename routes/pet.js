@@ -4,10 +4,11 @@ import { body } from "express-validator";
 import { addPet, deletePet, getPet, getPets, updatePet } from "../api/pet.js";
 import { checkBody } from "../middleware/validation/validation.js";
 import { employeeMiddleware } from "../middleware/auth/employee.js";
+import { veterinaryMiddleware } from "../middleware/auth/veterinary.js";
 
 const petApp = express.Router();
 
-petApp.get("/", employeeMiddleware, getPets);
+petApp.get("/", veterinaryMiddleware, getPets);
 petApp.get("/:id", employeeMiddleware, getPet);
 petApp.post(
   "/",
