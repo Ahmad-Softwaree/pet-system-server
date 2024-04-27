@@ -32,9 +32,7 @@ export const getManager = async (req, res) => {
 export const makeEmployee = async (req, res) => {
   try {
     let data = await db("user")
-      .where("role", "manager")
-      .orWhere("role", "high_manager")
-      .andWhere("id", req.params.id)
+      .where("id", req.params.id)
       .update({ role: "employee" });
     data = await db("user").where("id", req.params.id);
     return res.status(200).json({ data: data[0] });
@@ -45,8 +43,7 @@ export const makeEmployee = async (req, res) => {
 export const makeHighManager = async (req, res) => {
   try {
     let data = await db("user")
-      .where("role", "manager")
-      .andWhere("id", req.params.id)
+      .where("id", req.params.id)
       .update({ role: "high_manager" });
     data = await db("user").where("id", req.params.id);
     return res.status(200).json({ data: data[0] });
