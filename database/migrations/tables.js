@@ -18,10 +18,11 @@ const up = function (knex) {
       table.string("type", 255).notNullable();
       table.string("image_name", 255);
       table.string("image_url", 255);
-
       table.integer("discount");
       table.integer("quantity");
-      table.time("expire_date", { precision: 6 });
+      table.integer("price");
+
+      table.timestamp("expire_date", { precision: 6 });
       table.timestamps();
     })
     .createTable("pet", function (table) {
@@ -31,17 +32,19 @@ const up = function (knex) {
       table.string("color", 255).notNullable();
       table.string("image_name", 255);
       table.string("image_url", 255);
+      table.integer("price");
+
       table.string("gender", 255);
       table.boolean("checked").default("false");
-      table.time("adoption_history", { precision: 6 });
+      table.timestamp("adoption_history", { precision: 6 });
       table.integer("age");
       table.timestamps();
     })
-    .createTable("veterinary", function (table) {
+    .createTable("clinic", function (table) {
       table.increments("id").primary();
       table.integer("pet_id").unsigned();
       table.foreign("pet_id").references("pet.id").deferrable("deferred");
-      table.string("pet_diseases", 255);
+      table.string("disease", 255);
       table.boolean("vaccine").default("false");
       table.string("medicine", 255);
       table.timestamps();
@@ -50,8 +53,6 @@ const up = function (knex) {
       table.increments("id").primary();
       table.string("name", 255).notNullable();
       table.string("address", 255).notNullable();
-      table.string("email", 255).unique().notNullable();
-      table.string("password", 255).notNullable();
       table.string("phone", 255).notNullable();
       table.timestamps();
     })

@@ -2,11 +2,7 @@ import express from "express";
 import { body } from "express-validator";
 
 import { addPet, deletePet, getPet, getPets, updatePet } from "../api/pet.js";
-import {
-  checkBody,
-  hashPassword,
-  passwordValidation,
-} from "../middleware/validation/validation.js";
+import { checkBody } from "../middleware/validation/validation.js";
 import { employeeMiddleware } from "../middleware/auth/employee.js";
 
 const petApp = express.Router();

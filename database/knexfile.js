@@ -7,6 +7,9 @@ const development = {
     password: "aghlqtyo2018#",
     database: "cs_database",
   },
+  seeds: {
+    path: "/seeds",
+  },
 };
 
 const production = {
@@ -17,6 +20,9 @@ const production = {
     user: "postgres",
     password: "aghlqtyo2018#",
     database: "cs_database",
+  },
+  seeds: {
+    path: "/seeds",
   },
 };
 

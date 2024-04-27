@@ -5,6 +5,9 @@ import authApp from "./routes/auth.js";
 import managerApp from "./routes/manager.js";
 import employeeApp from "./routes/employee.js";
 import petApp from "./routes/pet.js";
+import productApp from "./routes/product.js";
+import veterinaryApp from "./routes/veterinary.js";
+import clinicApp from "./routes/clinic.js";
 dotenv.config();
 
 const { PORT } = process.env;
@@ -21,7 +24,10 @@ app.use(
 app.use("/api/auth", authApp);
 app.use("/api/manager", managerApp);
 app.use("/api/employee", employeeApp);
+app.use("/api/veterinary", veterinaryApp);
 app.use("/api/pet", petApp);
+app.use("/api/product", productApp);
+app.use("/api/clinic", clinicApp);
 
 app.listen(PORT, () => {
   console.log("Server Start...");

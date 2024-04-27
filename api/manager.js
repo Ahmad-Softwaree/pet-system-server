@@ -8,6 +8,7 @@ export const getManagers = async (req, res) => {
     const data = await db("user")
       .where("role", "manager")
       .orWhere("role", "high_manager")
+      .andWhereNot("id", req.user.id)
       .offset(offset)
       .limit(PAGINATION);
     return res.status(200).json({ data });
