@@ -12,7 +12,6 @@ export const allMiddleware = async (req, res, next) => {
     if (!decoded || !roles.includes(decoded?.role))
       return res.status(400).json({ message: "no user" });
 
-    console.log("Hi");
     req.user = {
       id: decoded.id,
       role: decoded.role,

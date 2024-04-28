@@ -106,7 +106,6 @@ const userData = [
 const seed = async function (knex) {
   // Deletes ALL existing entries
   for (let person of userData) {
-    console.log(person);
     person.password = await bcrypt
       .genSalt(16)
       .then(async (pss) => await bcrypt.hash(person.password, pss));
