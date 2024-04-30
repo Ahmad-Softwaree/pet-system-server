@@ -5,7 +5,7 @@ const development = {
     port: 5432,
     user: "postgres",
     password: "aghlqtyo2018#",
-    database: "cs_database",
+    database: "pet_system",
   },
   seeds: {
     path: "/seeds",
@@ -19,7 +19,7 @@ const production = {
     port: 5432,
     user: "postgres",
     password: "aghlqtyo2018#",
-    database: "cs_database",
+    database: "pet_system",
   },
   seeds: {
     path: "/seeds",
